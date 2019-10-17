@@ -8,7 +8,7 @@ public class loadCards {
 
 	public static card[] compileDeck() throws FileNotFoundException {
 		card[] Card = new card[98];
-		Scanner cardIn = new Scanner(new File("C:/temp/cards.txt"));
+		Scanner cardIn = new Scanner(new File("./assets/cards.txt"));
 
 		for (int i = 0; cardIn.hasNext(); i++) {
 			Card[i] = new card();
