@@ -6,6 +6,7 @@ public class player {
 	int handIndex = 0;
 	int spiteTokens = 0;
 	int playerLocation = 0;
+	int turnsLeft = 0;
 	String name;
 	boolean isAlive = false;
 
@@ -88,5 +89,21 @@ public class player {
 	public int getLocation() {
 
 		return playerLocation;
+	}
+
+	public void endTurn() {
+
+		turnsLeft--;
+	}
+
+	public int getTurnsLeft() {
+
+		return turnsLeft;
+	}
+
+	public void addTurns(int val) {
+
+		turnsLeft = turnsLeft + val;
+
 	}
 }

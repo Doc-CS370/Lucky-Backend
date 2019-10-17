@@ -24,14 +24,14 @@ public class KillDoctorLucky {
 		
 		
 		
-		//Room[11].print();
-		//Card[96].print();
+		Room[11].print();
+		Card[96].print();
 		//Card[97].print();
-		//player Player = new player();
-		//Card = Player.drawSevenCards(Card);
-		//Card = Player.drawCard(Card);
+		player Player = new player();
+		Card = Player.drawSevenCards(Card);
+		Card = Player.drawCard(Card);
 		
-		/* murder check test
+		//murder check test
 		player player[] = new player[9];
 		
 		player[0]= new player();
@@ -46,7 +46,7 @@ public class KillDoctorLucky {
 		
 		player[0].setLocation(0);
 		player[1].setLocation(0);
-		player[2].setLocation(14);
+		player[2].setLocation(0);
 		player[3].setLocation(14);
 		player[4].setLocation(14);
 		player[5].setLocation(14);
@@ -65,11 +65,23 @@ public class KillDoctorLucky {
 		player[8].setAlive();
 		
 		int activeTurn = 1;
-		Room[0].setNumberOfOccupants(2);
+		Room[0].setNumberOfOccupants(3);
 		
 		boolean witnessPresent = witnessCheck.checkForWitness(Room, player, activeTurn);
 		System.out.println("RETURN " + witnessPresent);
+		
+		
+		//Move check test
+		/*
+		player player[] = new player[9];
+		player[1]= new player();
+		player[1].setLocation(0);
+		int desiredRoom = 5;
+		int activeTurn = 1;
+		boolean valid = moveCheck.isMoveValid(Room, player, desiredRoom, activeTurn);
+		System.out.println(valid);
 		*/
+		
 	}
 
 }
