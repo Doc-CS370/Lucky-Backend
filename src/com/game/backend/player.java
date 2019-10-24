@@ -1,9 +1,11 @@
 package com.game.backend;
 
+import java.util.Arrays;
+
 public class player {
 
 	int[] playerHand = new int[10];
-	int handIndex = 0;
+	int handIndex = 0; //SHOULD ALWAYS BE LOCATED ON A NULL CARD VALUE
 	int spiteTokens = 0;
 	int playerLocation = 0;
 	int turnsLeft = 0;
@@ -12,53 +14,6 @@ public class player {
 
 	public int[] getPlayerHand() {
 		return playerHand;
-	}
-
-	public card[] drawSevenCards(card[] Card) {
-
-		int cardsDrawn = 0;
-		while (cardsDrawn != 7) {
-
-			// Card[96].print(); //TO SEE IF CARD ARRAY MADE IT HERE
-
-			int randInt = (int) (Math.random() * 97);
-			if ((Card[randInt].getCardStatus()) == 0) {
-				playerHand[handIndex] = (Card[randInt].getCardNumber());
-				handIndex++;
-				System.out.println(Card[randInt].getCardFlavor() + " has been added to hand.");
-				Card[randInt].setCardStatus(1);
-				cardsDrawn++;
-			}
-		}
-
-		return Card;
-	}
-
-	public card[] drawCard(card[] Card) {
-		System.out.println("SINGLE DRAW");
-
-		int cardsDrawn = 0;
-
-		if (handIndex < 9) {
-
-			while (cardsDrawn != 1) {
-
-				int randInt = (int) (Math.random() * 97);
-				if ((Card[randInt].getCardStatus()) == 0) {
-
-					playerHand[handIndex] = (Card[randInt].getCardNumber());
-					handIndex++;
-					System.out.println(Card[randInt].getCardFlavor() + " has been added to hand.");
-					Card[randInt].setCardStatus(1);
-					cardsDrawn++;
-				}
-			}
-
-		} else {
-			System.out.println("PLAYER HAS TOO MANY CARDS");
-		}
-
-		return Card;
 	}
 
 	public void setAlive() {
@@ -105,5 +60,59 @@ public class player {
 
 		turnsLeft = turnsLeft + val;
 
+	}
+	
+	public void addHandIndex() {
+		
+		handIndex++;
+	}
+	
+	public void decHandIndex() {
+		
+		handIndex--;
+	}
+	
+	public void addCard(int cardNum) {
+		playerHand[handIndex] = cardNum;
+		handIndex++;
+		
+	}
+	
+	public void removeCard(int cardNum) {
+		
+		for (int i = 0; i < 10; i++) {
+			if(playerHand[i] == cardNum) {
+				int mark = i;
+				while(mark < 9) {
+					playerHand[mark] = playerHand[mark+1];
+					mark++;
+				}
+				playerHand[9] = 0;
+				handIndex--;
+				i = 10;
+			}
+			
+			
+		}
+		
+	}
+	
+	public void testHand() {
+		
+		//THIS IS JUST TO FORCE CARDS INTO SOMEONES HAND
+		playerHand[0] = 78;
+		playerHand[1] = 79;
+		handIndex = 2;
+	}
+	public void print() {
+		System.out.println("/////////////////////////////////////////////////");
+		System.out.println("CURRENT PLAYER IS: " + name + " IS " + isAlive);
+		System.out.println("HOLDING CARDS: " + Arrays.toString(playerHand));
+		System.out.println("WITH AN INDEX OF: " + handIndex);
+		System.out.println("WITH " + spiteTokens + " SPITE TOKENS");
+		System.out.println("CURRENTLY IN ROOM: " + playerLocation);
+		System.out.println("WITH " + turnsLeft + " TURNS LEFT");
+		System.out.println("/////////////////////////////////////////////////");
+		
 	}
 }

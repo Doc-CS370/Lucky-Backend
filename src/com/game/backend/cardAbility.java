@@ -12,13 +12,14 @@ public class cardAbility {
 		System.out.println("TARGET PLAYER: " + targetPlayer);
 		System.out.println("CURRENT LOCATION: " + player[targetPlayer].getLocation());
 		System.out.println("CURRENT ROOM POPULATION: " + Room[player[targetPlayer].getLocation()].getNumberOfOccupants());
+		System.out.println("CARD VALUE: " + Card[cardNum].getCardValue());
 		Room[player[targetPlayer].getLocation()].removeOccupant();
 		Room[Card[cardNum].getCardValue()].addOccupant();
-		player[targetPlayer].setLocation(Card[cardNum].getCardValue());
-		System.out.println("////////////////////////////////////////////////////");
-		System.out.println("TARGET PLAYER: " + targetPlayer);
-		System.out.println("CURRENT LOCATION: " + player[targetPlayer].getLocation());
-		System.out.println("CURRENT ROOM POPULATION: " + Room[player[targetPlayer].getLocation()].getNumberOfOccupants());
+		player[targetPlayer].setLocation(Card[cardNum].getCardLocation());
+		//System.out.println("////////////////////////////////////////////////////");
+		//System.out.println("TARGET PLAYER: " + targetPlayer);
+		//System.out.println("CURRENT LOCATION: " + player[targetPlayer].getLocation());
+		//System.out.println("CURRENT ROOM POPULATION: " + Room[player[targetPlayer].getLocation()].getNumberOfOccupants());
 	}
 	
 	public static void useMoveCard(card[] Card, player[] player, int cardNum, int playerTurn) {
