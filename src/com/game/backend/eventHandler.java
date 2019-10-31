@@ -1,5 +1,7 @@
 package com.game.backend;
 
+import java.util.Arrays;
+
 public class eventHandler {
 
 	public static void move(player[] player, room[] Room, int targetRoom, int playerNum) {
@@ -9,7 +11,8 @@ public class eventHandler {
 
 	}
 
-	public static void useRoomCard(room[] Room, card[] Card, player[] player, int cardNum, int targetPlayer, int usingPlayer) {
+	public static void useRoomCard(room[] Room, card[] Card, player[] player, int cardNum, int targetPlayer,
+			int usingPlayer) {
 
 		Card[cardNum].setCardStatus(2);
 		player[usingPlayer].removeCard(cardNum);
@@ -50,7 +53,8 @@ public class eventHandler {
 		// TURNS");
 	}
 
-	public static int useWeaponCard(player[] player, int playernum, card[] Card, int cardNum, boolean specialAttackActive) {
+	public static int useWeaponCard(player[] player, int playernum, card[] Card, int cardNum,
+			boolean specialAttackActive) {
 
 		Card[cardNum].setCardStatus(2);
 		player[playernum].removeCard(cardNum);
@@ -76,17 +80,61 @@ public class eventHandler {
 	}
 
 	public static void drawCard(card[] Card, player[] player, int playerNum) {
+		/*
+		 * int hasDrawn = 0;
+		 * 
+		 * while (hasDrawn == 0) { int randInt = (int) (Math.random() * 97); if
+		 * (Card[randInt].getCardStatus() == 0) { player[playerNum].addCard(randInt);
+		 * Card[randInt].setCardStatus(1); hasDrawn++;
+		 * 
+		 * 
+		 * }
+		 * 
+		 * }
+		 */
 
-		int hasDrawn = 0;
+		// Create undrawn array
+		// Supports a maximum of 200 cards
+		int[] eligibleCards = new int[200];
+		Arrays.fill(eligibleCards, 999);
+		// 999 means null
 
-		while (hasDrawn == 0) {
-			int randInt = (int) (Math.random() * 97);
-			if (Card[randInt].getCardStatus() == 0) {
-				player[playerNum].addCard(randInt);
-				Card[randInt].setCardStatus(1);
-				hasDrawn++;
+		int cnt = 0;
+		int deckCheck = 0;
+		for (int i = 0; i < Card.length; i++) {
+			if (Card[i].getCardStatus() == 0) {
+
+				eligibleCards[cnt] = Card[i].getCardNumber();
+				cnt++;
 			}
 
 		}
+
+		
+		
+		
+		
+		
+		if (cnt == 0) {
+			for (int i = 0; i < Card.length; i++) {
+				if(Card[i].getCardStatus() == 2) {
+					Card[i].setCardStatus(0);
+					deckCheck++;
+				}
+				if(deckCheck == 0) {
+					
+					System.out.println("ERROR! OUT OF CARDS, CANNOT DRAW");
+				}
+				
+				
+			}
+		} else {
+
+			int randInt = (int) (Math.random() * cnt);
+			player[playerNum].addCard(eligibleCards[randInt]);
+			Card[eligibleCards[randInt]].setCardStatus(1);
+
+		}
+
 	}
 }
