@@ -72,7 +72,7 @@ public class eventHandler {
 
 	public static int useFailureCard(player[] player, int playernum, card[] Card, int cardNum) {
 
-		Card[cardNum].setCardStatus(2);
+		Card[cardNum].setCardStatus(3);
 		player[playernum].removeCard(cardNum);
 		int failure = Card[cardNum].getCardValue();
 
@@ -110,23 +110,17 @@ public class eventHandler {
 
 		}
 
-		
-		
-		
-		
-		
 		if (cnt == 0) {
 			for (int i = 0; i < Card.length; i++) {
-				if(Card[i].getCardStatus() == 2) {
+				if (Card[i].getCardStatus() == 2) {
 					Card[i].setCardStatus(0);
 					deckCheck++;
 				}
-				if(deckCheck == 0) {
-					
+				if (deckCheck == 0) {
+
 					System.out.println("ERROR! OUT OF CARDS, CANNOT DRAW");
 				}
-				
-				
+
 			}
 		} else {
 
@@ -136,5 +130,29 @@ public class eventHandler {
 
 		}
 
+	}
+
+	public static boolean killDoctorLucky(int playernum, int weaponPower, card[] Card, player[] Player, room[] Room) {
+		
+		boolean success = false;
+		int failureValue = 0;
+
+		if(witnessCheck.checkForWitness(Room, Player, playernum) == false) {
+		
+		for (int i = 1; i < 9; i++) {
+
+			if (Player[i].getStatus() == true && i != playernum) {
+
+				// GIVE PLAYER CHANCE TO USE FAILURE CARD
+
+				int cardNum = 1; // HARD CODE TEST VALUE
+				failureValue = failureValue + useFailureCard(Player, i, Card, cardNum);
+			}
+		}
+		
+		if(failureValue < weaponPower) { success = true; System.out.println("Player " + playernum +" YOU KILLED DOCTOR LUCKY");}
+		}
+		
+		return success;
 	}
 }

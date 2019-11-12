@@ -11,7 +11,7 @@ public class moveCheck {
 			if (adjacentRooms[i] == desiredRoom) {
 				isMoveValid = true;
 				System.out.println("MOVE IS VALID, PROCEED");
-			}
+			}else System.out.println("ERROR! INVALID MOVE!");
 
 		}
 

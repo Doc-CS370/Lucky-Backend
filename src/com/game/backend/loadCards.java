@@ -10,13 +10,13 @@ public class loadCards {
 		card[] Card = new card[98];
 		Scanner cardIn = new Scanner(new File("./assets/cards.txt"));
 
-		Card[1] = new card();
-		Card[1].setCardNumber(0);
-		Card[1].setCardType(999);
-		Card[1].setCardValue(999);
-		Card[1].setCardSpecialValue(999);
-		Card[1].setCardLocation(999);
-		Card[1].setCardFlavor("TEST CARD");
+		Card[0] = new card();
+		Card[0].setCardNumber(0);
+		Card[0].setCardType(999);
+		Card[0].setCardValue(999);
+		Card[0].setCardSpecialValue(999);
+		Card[0].setCardLocation(999);
+		Card[0].setCardFlavor("TEST CARD");
 		
 		for (int i = 1; cardIn.hasNext(); i++) {
 			Card[i] = new card();

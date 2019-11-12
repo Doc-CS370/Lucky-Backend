@@ -102,7 +102,8 @@ public class player {
 		//THIS IS JUST TO FORCE CARDS INTO SOMEONES HAND
 		playerHand[0] = 78;
 		playerHand[1] = 79;
-		handIndex = 2;
+		playerHand[2] = 1;
+		handIndex = 3;
 	}
 	public void print() {
 		System.out.println("/////////////////////////////////////////////////");

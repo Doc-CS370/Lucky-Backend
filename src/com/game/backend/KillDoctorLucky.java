@@ -114,22 +114,45 @@ public class KillDoctorLucky {
 		//RoomHighlighter.main(args, playerChoice);
 		//RoomHighlighter.Highlight(player[playerTurn].getLocation());
 				
-		player[0].setName("JOHHNYBOB");
-		player[0].setAlive();
-		player[0].testHand();
-		player[0].print();
-		eventHandler.useRoomCard(Room, Card, player, 78, 0, 0);
+		//player[0].setName("JOHHNYBOB");
+		//player[0].setAlive();
+		//player[0].testHand();
+		//player[0].print();
+		//eventHandler.useRoomCard(Room, Card, player, 78, 0, 0);
 		
-		player[0].print();
+		//player[0].print();
+		
+		
 		
 	
 		
+		//int value = eventHandler.useFailureCard(player, 0, Card, 1);
+		//System.out.println("THE VALUE IS:" + value);
+		//player[0].print();
+		//Card[1].print();
 		
+		//Card[1].print();
+		//Card[2].print();
+		//Card[3].print();
+		//Card[4].print();
 		
+		//Room[0].print();
+		//Room[1].print();
+		//Room[2].print();
+		//Room[3].print();
+		//Room[4].print();
 		
+		player[0].setName("JOHHNYBOB");
+		player[0].setAlive();
+		player[0].testHand();
+		player[0].setLocation(1);
+		Room[1].addOccupant();
 		
+		player[0].print();
+		Room[1].print();
+		Room[4].print();
 		
-		
+		System.out.println(moveCheck.isMoveValid(Room, player, 4, 0));
 		}
 			
 		
